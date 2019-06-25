@@ -2,39 +2,35 @@
 
 Currently, this test focus on three different implements: using pytorch; using julia and using itensor.
 
-The result is
-
-| Implement | Time(average over 10 runs) |
-| --------- | -------------------------- |
-| pytorch   | 1.73s                      |
-| julia     | 9.31s                      |
-| itensor   | 9.75s                      |
-
 The scaling curve with iterations is
 
-![scaling curve](./etc/iterations.png)
+![scaling curve](./plots/iterscaling.png)
 
 The scaling curve with maximum cuts is
 
-![cut](./etc/maximumcut.png)
+![cut](./plots/chiscaling.png)
+
+both averaged over at least 5 runs and the data is available in `times.csv`.
+
+Note that for julia, compilation time is not included (same as for itensor).
 
 ## Details
 
-This test is done on a mid 2014 MacBook Pro with a 2.2GHz Intel i7 processor and 16G of memory. And the pytorch test doesn't utilize a GPU. 
+This test is done on a Thinkpad x260 with Intel(R) Core(TM) i7-6500U CPU @ 2.50GHz
+and 16G of memory without a GPU.
 
 Library versions:
 
-| name    | version                    |
-| ------- | -------------------------- |
-| pytorch | 1.0.0.dev20180921(nightly) |
-| julia   | 1.01                       |
-| itensor | 2.1.1                      |
+| name    | version |
+| ------- | --------|
+| pytorch | 1.1.0   |
+| julia   | 1.1.0   |
+| itensor | 2.1.1   |
 
 To perform this test on your machine, run
 
 ```bash
-python ./test.py
-python ./testscaling.py
+julia ./evaluate.jl
 ```
 
 ## About TRG Algorithm
